@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="de">
+   <head>
+      <meta charset="UTF-8">
+      <link href="css/Stylesheet.css" rel="Stylesheet">
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="icon" href="Bilder/Logo.png">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <title>TVStation</title>
+
+   </head>
+   <body>
+    <div class="header">
+        <h1>Zentrale Informatik</h1>
+        <p class="date"><%= Time.now.strftime("%A, %B %d, %H:%M") %></p>
+        <div class="bl-logo">
+            <%= image_tag("Baselland.png", size: "235x55") %>
+        </div>
+    </div>
+    <div class="body">
+    <div class="parent">
+    <div class="div1"> 
+        <div class="inner-parent">
+        <div class="div1">
+            <div class="weather">
+                <h2 class="bold">Today</h2>
+                <img src='https://openweathermap.org/img/wn/<%= @data["weather"].first["icon"] %>@2x.png' />
+                <p><%= @data["main"]["temp"] %> Grad</p>
+                <p><%= @data["weather"].first["main"] %></p>
+                <p><%= @data["weather"].first["description"] %></p>
+            </div>
+        </div>
+        <div class="div2">
+            <div class="weatherprediction">
+                <p class="bold"><%= Date.parse(@days[1]["datetime"]).strftime("%a, %b %d") %></p>
+                <p><%= @days[1]["temp"] %> Grad</p>
+                <p><%= @days[1]["conditions"] %></p>
+            </div>
+        </div>
+        <div class="div3">
+            <div class="weatherprediction">
+                <p class="bold"><%= Date.parse(@days[2]["datetime"]).strftime("%a, %b %d") %></p>
+                <p><%= @days[2]["temp"] %> Grad</p>
+                <p><%= @days[2]["conditions"] %></p>
+            </div>
+        </div>
+        <div class="div4">
+            <div class="weatherprediction">
+                <p class="bold"><%= Date.parse(@days[3]["datetime"]).strftime("%a, %b %d") %></p>
+                <p><%= @days[3]["temp"] %> Grad</p>
+                <p><%= @days[3]["conditions"] %></p>
+            </div>
+        </div>
+        <div class="div5">
+            <div class="weatherpredictionUnder">
+                <p class="bold"><%= Date.parse(@days[4]["datetime"]).strftime("%a, %b %d") %></p>
+                <p><%= @days[4]["temp"] %> Grad</p>
+                <p><%= @days[4]["conditions"] %></p>
+            </div>
+        </div>
+        <div class="div6">
+            <div class="weatherpredictionUnder">
+                <p class="bold"><%= Date.parse(@days[5]["datetime"]).strftime("%a, %b %d") %></p>
+                <p><%= @days[5]["temp"] %> Grad</p>
+                <p><%= @days[5]["conditions"] %></p>
+            </div>
+        </div>
+        <div class="div7">
+            <div class="weatherpredictionUnder">
+                <p class="bold"><%= Date.parse(@days[6]["datetime"]).strftime("%a, %b %d") %></p>
+                <p><%= @days[6]["temp"] %> Grad</p>
+                <p><%= @days[6]["conditions"] %></p>
+            </div>
+        </div>
+    </div>
+    </div>
+        <div class="div2"> 
+            <div class="news">
+                <div class="news-slideshow">
+                    <% @i_news.first(6).each do |item| %>
+                        <div class="news-slide">
+                            <p class="left max-characters"><%= item["author"] %>: <%= truncate_title(item["title"], item["author"]) %></p>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            <div class="news">
+                <div class="carousel-item">
+                <%= image_tag("Baselland.png", size: "235x55") %>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Hallo</h5>
+                        <p>doddges</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="div3">
+            <div class="calendar">
+                <h2 class="bold">ZZZFKD Sitzungszimmer 310, Frenkendoerferstr. 17, 3. Stock</h2>
+                <% @events.each do |event| %>
+                    <div class="calendar-content">
+                        <p class="left max-characters"><%= event.summary %></p>
+                        <p class="right"><%= event.dtstart.strftime("%B %d, %H:%M") %> - <%= event.dtend.strftime("%H:%M") %></p>
+                    </div>
+                    <p></p>
+                <% end %>
+            </div>
+        </div>
+        <div class="div4">
+            <div class="calendar">
+            <h2 class="bold">ZZZSID Schulungsraum 1, Frenkendoerferstr. 17, 3. Stock</h2>
+            <% @events2.each do |event2| %>
+                <div class="calendar-content">
+                    <p class="left max-characters"><%= event2.summary %></p>
+                    <p class="right"><%= event2.dtstart.strftime("%B %d, %H:%M") %> - <%= event2.dtend.strftime("%H:%M") %></p>
+                </div>
+                <p></p>
+            <% end %>
+            </div>
+        </div>
+    </div>
+    </div>
+   </body>
+</html>

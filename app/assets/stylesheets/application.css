@@ -1,0 +1,269 @@
+
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/assets/fonts/Roboto-Regular.ttf') format('ttf'),
+       url('/assets/fonts/Roboto-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 30px;
+  margin-top: 120px;
+  background-color: #FDF5E6;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 100%;
+  background-color: #333333;
+  color: white;
+  padding-left: 31px;
+}
+
+.date {
+  margin-left: 515px;
+}
+
+.parent {
+  display: inline-grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, auto);
+  grid-column-gap: 30px;
+  grid-row-gap: 23px;
+  grid-auto-rows: auto;
+}
+
+.div1 {
+  grid-area: 1 / 1 / 3 / 3;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.div2 {
+  grid-area: 1 / 3 / 3 / 5;
+}
+
+.div3 {
+  grid-area: 3 / 1 / 5 / 3;
+}
+
+.div4 {
+  grid-area: 3 / 3 / 5 / 5;
+}
+
+.inner-parent {
+  display: inline-grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.inner-parent .div1 {
+  grid-area: 1 / 1 / 3 / 2;
+}
+
+.inner-parent .div2 {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.inner-parent .div3 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+.inner-parent .div4 {
+  grid-area: 1 / 4 / 2 / 5;
+}
+
+.inner-parent .div5 {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.inner-parent .div6 {
+  grid-area: 2 / 3 / 3 / 4;
+}
+
+.inner-parent .div7 {
+  grid-area: 2 / 4 / 3 / 5;
+}
+
+.weather {
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: lightgray;
+  padding: 5px 20px 5px 20px;
+  margin-right: 27px;
+  text-align: center;
+}
+
+.weatherprediction {
+  height: 134px;
+  width: 134px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px 20px 5px 20px;
+  margin-right: 26px;
+  text-align: center;
+}
+
+.weatherpredictionUnder {
+  height: 134px;
+  width: 134px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px 20px 5px 20px;
+  margin-right: 26px;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.news {
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px 20px 5px 20px;
+}
+
+.news-content {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+.calendar {
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: lightgray;
+  padding: 5px 20px 5px 20px;
+  text-align: center;
+}
+
+.weather,
+.weatherprediction,
+.weatherpredictionUnder,
+.news,
+.calendar,
+.calendar-content {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.calendar-content {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px 20px 5px 20px;
+}
+
+.bl-logo {
+  margin-top: 14px;
+  margin-right: 50px;
+}
+
+.max-characters {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calendar p {
+  flex: 1;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+h1 {
+  color: #ff0000;
+  font-size: 30px;
+}
+
+.header p {
+  color: white;
+  font-size: 21px;
+}
+
+/* Responsive Design for 1920x1080 */
+
+@media only screen and (max-width: 1920px) {
+  .bl-logo {
+    margin-left: auto;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .date {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .bl-logo {
+    margin-top: 0;
+    margin-left: 0;
+  }
+  
+  .parent {
+    display: block;
+    margin-top: 20px;
+  }
+  
+  .div1,
+  .div2,
+  .div3,
+  .div4 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .inner-parent {
+    display: block;
+    margin-top: 20px;
+  }
+  
+  .inner-parent .div1,
+  .inner-parent .div2,
+  .inner-parent .div3,
+  .inner-parent .div4,
+  .inner-parent .div5,
+  .inner-parent .div6,
+  .inner-parent .div7 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .calendar p {
+    flex: 1;
+    margin-bottom: 10px;
+  }
+}
